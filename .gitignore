@@ -1,0 +1,97 @@
+#
+# ---------------------------------------------------------------------------
+# Terraform state. NEVER commit this.
+# State contains resource IDs and may contain secrets in plain text.
+# State lives in the S3 backend instead.
+# ---------------------------------------------------------------------------
+
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.tfstate.lock.info
+
+#
+# ---------------------------------------------------------------------------
+# Provider plugins and module cache
+# ---------------------------------------------------------------------------
+
+**/.terraform/*
+.terraform/
+
+#
+# ---------------------------------------------------------------------------
+# Plan files
+# Generated per run and published as a workflow artifact.
+# ---------------------------------------------------------------------------
+
+tfplan
+*.tfplan
+tfplan.txt
+plan.out
+
+#
+# ---------------------------------------------------------------------------
+# Crash logs
+# ---------------------------------------------------------------------------
+
+crash.log
+crash.*.log
+
+#
+# ---------------------------------------------------------------------------
+# Variable files may contain account-specific or sensitive values.
+#
+# terraform.tfvars is committed here on purpose:
+# it contains only public, non-secret configuration and the workflow needs it.
+# ---------------------------------------------------------------------------
+
+*.tfvars
+*.tfvars.json
+
+!terraform.tfvars
+!example.tfvars
+
+#
+# ---------------------------------------------------------------------------
+# CLI config
+# ---------------------------------------------------------------------------
+
+.terraformrc
+terraform.rc
+
+#
+# ---------------------------------------------------------------------------
+# Override files are for local experiments
+# ---------------------------------------------------------------------------
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+#
+# ---------------------------------------------------------------------------
+# Credentials and keys — NEVER commit these
+# ---------------------------------------------------------------------------
+
+*.pem
+*.ppk
+.env
+.env.*
+credentials
+aws_credentials
+
+#
+# ---------------------------------------------------------------------------
+# Editor and OS noise
+# ---------------------------------------------------------------------------
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+#
+# NOTE: .terraform.lock.hcl is deliberately NOT ignored.
+# Commit it so CI installs the exact provider versions you tested with.
+#
